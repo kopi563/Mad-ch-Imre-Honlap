@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Az Ember Tragédiája – Madách Imre</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Cinzel+Decorative:wght@400;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f4e8c1;
+    --parchment-dark: #e8d5a0;
+    --parchment-shadow: #c9a96e;
+    --ink: #1a0f00;
+    --ink-faded: #3d2b1a;
+    --ink-light: #5c3d1e;
+    --red-accent: #8b1a1a;
+    --gold: #b8860b;
+    --gold-light: #d4a017;
+    --border-dark: #6b4423;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: #2a1a0a;
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+    font-family: 'Libre Baskerville', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  /* Paper texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  .page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* Decorative header banner */
+  .masthead {
+    background: var(--parchment);
+    border: 3px double var(--border-dark);
+    outline: 6px solid var(--parchment-shadow);
+    outline-offset: -10px;
+    text-align: center;
+    padding: 40px 30px 30px;
+    position: relative;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.6), inset 0 0 60px rgba(139,86,40,0.1);
+    background-image: 
+      radial-gradient(ellipse at top, rgba(200,160,80,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(100,60,20,0.1) 0%, transparent 60%);
+  }
+
+  .masthead-ornament {
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.5em;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .masthead h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-shadow: 1px 1px 0 rgba(139,86,40,0.3);
+  }
+
+  .masthead h1 span {
+    display: block;
+    font-size: 0.55em;
+    font-family: 'IM Fell English SC', serif;
+    color: var(--red-accent);
+    letter-spacing: 0.15em;
+    margin-top: 6px;
+  }
+
+  .masthead-date {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    letter-spacing: 0.2em;
+    margin-top: 12px;
+    border-top: 1px solid var(--parchment-shadow);
+    padding-top: 10px;
+  }
+
+  .masthead-rule {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 14px 0 8px;
+  }
+  .masthead-rule::before, .masthead-rule::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+  .masthead-rule span {
+    color: var(--gold);
+    font-size: 1.2rem;
+  }
+
+  /* Main content area */
+  .paper {
+    background: var(--parchment);
+    background-image: 
+      linear-gradient(to bottom, rgba(255,255,240,0.4) 0%, transparent 30%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 27px,
+        rgba(139,100,50,0.06) 27px,
+        rgba(139,100,50,0.06) 28px
+      );
+    border: 2px solid var(--border-dark);
+    box-shadow: 0 6px 30px rgba(0,0,0,0.7), inset 0 0 80px rgba(200,160,80,0.08);
+    padding: 50px 60px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .paper::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(200,100,60,0.15), transparent);
+  }
+
+  /* Section styles */
+  .section {
+    margin-bottom: 50px;
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.2s; }
+  .section:nth-child(3) { animation-delay: 0.3s; }
+  .section:nth-child(4) { animation-delay: 0.4s; }
+  .section:nth-child(5) { animation-delay: 0.5s; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .section-number {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.7rem;
+    color: var(--red-accent);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .section-header h2 {
+    font-family: 'IM Fell English SC', serif;
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    color: var(--ink);
+    letter-spacing: 0.05em;
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0 20px;
+    justify-content: center;
+  }
+
+  .section-divider::before, .section-divider::after {
+    content: '';
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-dark));
+  }
+
+  .section-divider::after {
+    background: linear-gradient(to left, transparent, var(--border-dark));
+  }
+
+  .section-divider span {
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ink-faded);
+    margin-bottom: 14px;
+    text-align: justify;
+    text-indent: 2em;
+    hyphens: auto;
+  }
+
+  p:first-of-type::first-letter {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 3.2em;
+    line-height: 0.8;
+    float: left;
+    margin: 0.08em 0.1em 0 0;
+    color: var(--red-accent);
+    text-shadow: 2px 2px 4px rgba(139,26,26,0.2);
+  }
+
+  /* Intro questions box */
+  .intro-questions {
+    border: 2px solid var(--gold);
+    background: rgba(184,134,11,0.06);
+    padding: 24px 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .intro-questions::before {
+    content: '❧';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    padding: 0 10px;
+    color: var(--gold);
+    font-size: 1.4rem;
+  }
+
+  .intro-questions h3 {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--red-accent);
+    margin-bottom: 14px;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+
+  .intro-questions ol {
+    list-style: none;
+    counter-reset: q-counter;
+  }
+
+  .intro-questions ol li {
+    counter-increment: q-counter;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--ink-faded);
+    padding-left: 2em;
+    position: relative;
+    margin-bottom: 8px;
+  }
+
+  .intro-questions ol li::before {
+    content: counter(q-counter) '.';
+    position: absolute;
+    left: 0;
+    font-style: normal;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    top: 3px;
+  }
+
+  /* Portrait section */
+  .portrait-section {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .portrait-frame {
+    position: relative;
+    text-align: center;
+  }
+
+  .portrait-frame img {
+    width: 100%;
+    filter: sepia(60%) contrast(1.1) brightness(0.95);
+    border: 3px solid var(--border-dark);
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.4), inset 0 0 20px rgba(0,0,0,0.1);
+    display: block;
+  }
+
+  .portrait-caption {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.7rem;
+    color: var(--ink-light);
+    text-align: center;
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+    text-indent: 0;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    margin: 24px 0;
+    padding-left: 24px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), var(--border-dark), var(--gold));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 18px;
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    content: '◆';
+    position: absolute;
+    left: -22px;
+    top: 2px;
+    font-size: 0.6rem;
+    color: var(--gold);
+    background: var(--parchment);
+  }
+
+  .timeline-year {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.7rem;
+    color: var(--red-accent);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .timeline-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--ink-faded);
+    text-indent: 0;
+    margin-bottom: 0;
+  }
+
+  /* Character cards */
+  .character-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .char-card {
+    border: 1px solid var(--border-dark);
+    border-top: 3px solid var(--red-accent);
+    background: rgba(200,160,80,0.08);
+    padding: 18px 16px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .char-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .char-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .char-name {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1rem;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .char-desc {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    color: var(--ink-faded);
+    font-style: italic;
+    text-indent: 0;
+    margin-bottom: 0;
+  }
+
+  /* Color scenes grid */
+  .scenes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .scene-card {
+    border: 1px solid var(--parchment-shadow);
+    background: rgba(200,160,80,0.06);
+    padding: 14px 16px;
+    position: relative;
+    transition: background 0.3s;
+  }
+
+  .scene-card:hover {
+    background: rgba(200,160,80,0.14);
+  }
+
+  .scene-num {
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    background: var(--red-accent);
+    color: var(--parchment);
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .scene-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .scene-desc {
+    font-size: 0.82rem;
+    color: var(--ink-faded);
+    line-height: 1.5;
+    text-indent: 0;
+    margin-bottom: 0;
+  }
+
+  /* Eszmék section */
+  .eszme-block {
+    border-left: 4px solid var(--gold);
+    padding-left: 20px;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .eszme-block h3 {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 1.1rem;
+    color: var(--red-accent);
+    margin-bottom: 10px;
+  }
+
+  /* Quote box */
+  .quote-box {
+    border: 1px solid var(--border-dark);
+    background: rgba(139,26,26,0.04);
+    margin: 24px 0;
+    padding: 24px 30px;
+    text-align: center;
+    position: relative;
+  }
+
+  .quote-box::before {
+    content: '❝';
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.4;
+    position: absolute;
+    top: 4px;
+    left: 14px;
+    line-height: 1;
+  }
+
+  .quote-box blockquote {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--ink);
+    text-indent: 0;
+    margin-bottom: 8px;
+  }
+
+  .quote-source {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.75rem;
+    color: var(--ink-light);
+    text-indent: 0;
+    margin-bottom: 0;
+    letter-spacing: 0.1em;
+  }
+
+  /* Summary box */
+  .summary-box {
+    border: 2px double var(--border-dark);
+    padding: 28px 32px;
+    background: rgba(184,134,11,0.05);
+    margin: 10px 0;
+    position: relative;
+  }
+
+  .summary-box::after {
+    content: '✦';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    padding: 0 8px;
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  /* Quiz section */
+  .quiz-container {
+    margin-top: 10px;
+  }
+
+  .quiz-item {
+    border: 1px solid var(--parchment-shadow);
+    margin-bottom: 14px;
+    background: rgba(200,160,80,0.04);
+    overflow: hidden;
+  }
+
+  .quiz-question {
+    padding: 14px 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+    font-family: 'IM Fell English', serif;
+    font-size: 0.98rem;
+    color: var(--ink);
+    user-select: none;
+  }
+
+  .quiz-question:hover {
+    background: rgba(200,160,80,0.1);
+  }
+
+  .quiz-question .q-num {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.65rem;
+    color: var(--red-accent);
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .quiz-question .q-text {
+    flex: 1;
+  }
+
+  .quiz-question .q-arrow {
+    font-size: 0.75rem;
+    color: var(--gold);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .quiz-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    background: rgba(184,134,11,0.08);
+    font-size: 0.9rem;
+    color: var(--ink-faded);
+    line-height: 1.7;
+    padding: 0 18px;
+  }
+
+  .quiz-answer.open {
+    max-height: 200px;
+    padding: 14px 18px;
+  }
+
+  .quiz-item.active .q-arrow {
+    transform: rotate(90deg);
+  }
+
+  /* Footer */
+  .footer-band {
+    text-align: center;
+    color: var(--parchment-shadow);
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    padding: 16px;
+    border-top: 1px solid rgba(200,150,60,0.3);
+    margin-top: 8px;
+  }
+
+  /* Horizontal ornamental divider */
+  .ornament-divider {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--gold);
+    margin: 28px 0;
+    letter-spacing: 0.4em;
+    opacity: 0.7;
+  }
+
+  /* Pullquote */
+  .pull-quote {
+    float: right;
+    width: 38%;
+    border-top: 2px solid var(--red-accent);
+    border-bottom: 1px solid var(--border-dark);
+    margin: 0 0 16px 24px;
+    padding: 12px 0;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--red-accent);
+    text-indent: 0;
+  }
+
+  /* Szín map infographic */
+  .szin-map {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0;
+    justify-content: center;
+  }
+
+  .szin-pill {
+    background: linear-gradient(135deg, rgba(139,86,40,0.12), rgba(184,134,11,0.08));
+    border: 1px solid var(--parchment-shadow);
+    padding: 6px 14px;
+    font-family: 'IM Fell English SC', serif;
+    font-size: 0.78rem;
+    color: var(--ink-faded);
+    white-space: nowrap;
+    cursor: default;
+    transition: all 0.2s;
+  }
+
+  .szin-pill:hover {
+    border-color: var(--gold);
+    color: var(--red-accent);
+    background: rgba(184,134,11,0.15);
+  }
+
+  .szin-pill.frame {
+    background: rgba(139,26,26,0.1);
+    border-color: var(--red-accent);
+    color: var(--red-accent);
+  }
+
+  @media (max-width: 700px) {
+    .paper { padding: 30px 22px; }
+    .portrait-section { grid-template-columns: 1fr; }
+    .portrait-frame { max-width: 180px; margin: 0 auto; }
+    .character-cards { grid-template-columns: 1fr; }
+    .scenes-grid { grid-template-columns: 1fr; }
+    .pull-quote { float: none; width: 100%; margin: 16px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <span class="masthead-ornament">✦ ✦ ✦</span>
+    <h1>Az Ember Tragédiája
+      <span>Madách Imre Drámai Költeménye</span>
+    </h1>
+    <div class="masthead-rule"><span>✦</span></div>
+    <div class="masthead-date">Irodalmi Ismertetés &nbsp;·&nbsp; MDCCCLX &nbsp;·&nbsp; Pesten Kinyomtatva</div>
+  </div>
+
+  <!-- PAPER BODY -->
+  <div class="paper">
+
+    <!-- SECTION 1: INTRO -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">Prológus</span>
+        <h2>Elgondolkodtató Kérdések</h2>
+        <div class="section-divider"><span>✦</span></div>
+      </div>
+
+      <p>Van-e az emberi életnek értelme? Képes-e az ember megváltani önmagát a történelem ismétlődő csapdájából? Miért küzdünk, ha tudjuk, hogy minden eszme előbb-utóbb elveszik, minden civilizáció porrá lesz, és a végső jég hidegsége egyformán beborít mindenkit? E kérdések nem csupán Madách Imre korának gyötrelmes dilemmái – ezek az emberi lét változatlan, örök kérdései.</p>
+
+      <p>Madách főművében, melyet 1859 és 1860 között írt, egy hatalmas álom keretében végigkísérhetjük Ádámot – az Embert – a történelem legfontosabb korszakain át. Minden korszak egy-egy nagy eszme ígéretét hordozza: a szabadságét, az egyenlőségét, a hitét, a tudományét. S minden korszak végül e remény csődjével zárul.</p>
+
+      <div class="intro-questions">
+        <h3>– Fontolóra érdemes kérdések –</h3>
+        <ol>
+          <li>Ha tudnád, hogy minden törekvésed kudarcra van ítélve, küzdenél-e mégis?</li>
+          <li>Miért romlik el minden nagy eszme, ha hatalom, tömeg vagy idő ér hozzá?</li>
+          <li>Mi ad erőt az embernek a kétség pillanataiban – hit, szerelem, vagy puszta makacsság?</li>
+          <li>Ádám vagy Lucifer szemével néznéd inkább a történelmet?</li>
+          <li>Mit jelent az Úr záró parancsa: „Küzdj és bízva bízzál!"?</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="ornament-divider">— ✦ ✦ ✦ —</div>
+
+    <!-- SECTION 2: MADÁCH ÉLETE -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">I. Rész</span>
+        <h2>Madách Imre Élete</h2>
+        <div class="section-divider"><span>✦</span></div>
+      </div>
+
+      <div class="portrait-section">
+        <div class="portrait-frame">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Mad%C3%A1ch_Imre.jpg/440px-Mad%C3%A1ch_Imre.jpg" alt="Madách Imre portréja" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <div style="display:none; width:100%; height:200px; background:rgba(139,86,40,0.15); border:2px solid var(--border-dark); display:flex; align-items:center; justify-content:center; flex-direction:column;">
+            <span style="font-size:3rem; color:var(--gold);">🖼</span>
+            <small style="font-family:'IM Fell English SC',serif; font-size:0.65rem; color:var(--ink-light); text-align:center; padding:8px;">Madách Imre<br>portréja</small>
+          </div>
+          <p class="portrait-caption">Madách Imre<br>1823–1864</p>
+        </div>
+        <div>
+          <p style="text-indent:0">Madách Imre 1823-ban született Alsósztregován, Nógrád megyében, nemesi családba. Pesten jogot tanult, majd az irodalmi élet perifériájára szorult gyenge egészsége miatt, és visszavonult a csesztvei birtok csendjébe – ahol végül megírta élete főművét.</p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-year">1823</span>
+              <p class="timeline-text">Születése Nógrád megyében, nemesi családban.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1840-es évek</span>
+              <p class="timeline-text">Pest, jogi tanulmányok; bekapcsolódás az irodalmi életbe. Tüdőbaja hazakényszeríti.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1848</span>
+              <p class="timeline-text">A szabadságharc alatt megyei tisztviselőként a nemzeti törekvések mellé áll. Fegyvert betegsége miatt nem fog.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1849–1852</span>
+              <p class="timeline-text">A forradalom leverése után letartóztatják. Nővérét a felkelt parasztok megölik Erdélyben; öccse, Pál tüdőbajban hal meg.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1854</span>
+              <p class="timeline-text">Házassága Fráter Erzsébettel – harmónia és tragédia egyszerre. Később elválnak.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1859–1860</span>
+              <p class="timeline-text">Megírja Az ember tragédiáját a csesztvei magányban.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1862</span>
+              <p class="timeline-text">A Magyar Tudományos Akadémia tagjává választják. Székfoglalója: „A nőről, különösen esztétikai szempontból."</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1864</span>
+              <p class="timeline-text">Halála – mindössze 41 évesen. A mű posztumusz világhírnevet hoz.</p>
+            </div>
+          </div>
+
+          <div class="pull-quote">„Az élet küzdelem, s az ember célja e küzdés maga."</div>
+          <p>Személyes tragédiái – a forradalom bukása, börtön, szeretteinek halála, kudarcos házassága – mélyen beleszőtték magukat a Tragédia pesszimista-reményes világképébe. Madách sorsát és főművének mondanivalóját lehetetlen egymás nélkül értelmezni.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament-divider">— ✦ ✦ ✦ —</div>
+
+    <!-- SECTION 3: A MŰ -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">II. Rész</span>
+        <h2>Az Ember Tragédiája – A Tétel Kifejtése</h2>
+        <div class="section-divider"><span>✦</span></div>
+      </div>
+
+      <!-- 2.1 Keletkezés -->
+      <div class="eszme-block">
+        <h3>1. Keletkezés és Főbb Témák</h3>
+      </div>
+
+      <p>A drámai költemény 1859 és 1860 között született, ám az emberiség sorsáról szóló kérdéseket, amelyeket felvet, nem ismer határt sem térben, sem időben. Madách egyszerre filozofál, polemizál és ábrándozik: vallásos és világi, pesszimista és reménnyel teli egyszerre ez a mű – s ezért vált a magyar irodalom leguniverzálisabb alkotásává.</p>
+
+      <p>A mű nagy témái: a demokrácia működése és korlátai; a kereszténység eredeti tisztasága és hatalmi romlása; a kapitalizmus és a szabad verseny valódi ára; az egyén és a tömeg örök ellentéte; a tudomány értéke és veszélye; a szerelem mint az egyetlen igazi menedék.</p>
+
+      <!-- Scenes overview -->
+      <div class="eszme-block" style="margin-top:28px">
+        <h3>2. Szerkezet: A 15 Szín</h3>
+      </div>
+
+      <p>A mű 15 színből áll. Az <em>első három és az utolsó</em> a keretszínek: az égben és a paradicsomban játszódnak, ahol az Úr, Lucifer, Ádám és Éva eredeti viszonyát ismerhetjük meg. A közbülső történelmi színek az emberiség nagy korszakait jelenítik meg Ádám álmán keresztül.</p>
+
+      <div class="szin-map">
+        <span class="szin-pill frame">1–3. Szín: Menny & Paradicsom (Keretszín)</span>
+        <span class="szin-pill">4. Egyiptom</span>
+        <span class="szin-pill">5. Athén</span>
+        <span class="szin-pill">6. Róma</span>
+        <span class="szin-pill">7. Konstantinápoly</span>
+        <span class="szin-pill">8. Prága (Kepler)</span>
+        <span class="szin-pill">9. Párizs</span>
+        <span class="szin-pill">10. Prága (Kepler álma)</span>
+        <span class="szin-pill">11. London</span>
+        <span class="szin-pill">12. Falanszter</span>
+        <span class="szin-pill">13. Világűr</span>
+        <span class="szin-pill">14. Eszkimó-jelenet</span>
+        <span class="szin-pill frame">15. Pálmafás kert (Keretszín)</span>
+      </div>
+
+      <!-- 2.3 Szereplők -->
+      <div class="eszme-block" style="margin-top:28px">
+        <h3>3. A Három Főszereplő</h3>
+      </div>
+
+      <div class="character-cards">
+        <div class="char-card">
+          <span class="char-icon">👑</span>
+          <span class="char-name">Ádám</span>
+          <p class="char-desc">Az emberiség képviselője. Minden korban új eszmét keres, újra remél, és újra csalódik. Az örök kérdező, az elnyűhetetlen törekvő lélek.</p>
+        </div>
+        <div class="char-card">
+          <span class="char-icon">🌹</span>
+          <span class="char-name">Éva</span>
+          <p class="char-desc">Az örök női princípium – az élet, az érzelem és a jövő szimbóluma. Ő az, aki a legreménytelenebb pillanatban is a születés ígéretét hordozza.</p>
+        </div>
+        <div class="char-card">
+          <span class="char-icon">🐍</span>
+          <span class="char-name">Lucifer</span>
+          <p class="char-desc">A tagadás szelleme. Nem gonosz, hanem következetes szkeptikus: hideg értelemmel mutatja fel az eszmények árnyoldalát és az illúziók törékenységét.</p>
+        </div>
+      </div>
+
+      <!-- 2.4 A mű vége -->
+      <div class="eszme-block" style="margin-top:28px">
+        <h3>4. A Mű Vége és Üzenete</h3>
+      </div>
+
+      <p>A tizenötödik szín a pálmafás kertbe tér vissza: Ádám felébred a luciferi látomásból, és az emberiség végzetének tudatában öngyilkosságra készül. Ám Éva bejelenti várandósságát – az új élet ígérete megállítja. Ádám leborul az Úr előtt, s hangzik el a dráma zárómondata.</p>
+
+      <div class="quote-box">
+        <blockquote>„Mondottam, ember: küzdj és bízva bízzál!"</blockquote>
+        <p class="quote-source">– Az Úr záró szavai, Az ember tragédiája, XV. szín</p>
+      </div>
+
+      <p>Ádám utolsó szavai: <em>„Uram, legyőztél. Im porban vagyok; / Nélküled, ellened hiába küzdök."</em> Ez nem pusztán megadás – hanem a transzcendencia szükségességének felismerése. Az angyalok kara ezután énekli: „Karod erős, szived meleg; / Ne félj, bízva bízzál!"</p>
+
+      <!-- ESZMÉK: EGYIPTOM, ATHÉN -->
+      <div class="ornament-divider" style="margin: 32px 0 24px">— ✦ —</div>
+
+      <div class="eszme-block">
+        <h3>III. Eszmék: Ádám Lelkesedése és Csalódása</h3>
+      </div>
+
+      <div class="scenes-grid">
+        <div class="scene-card">
+          <span class="scene-num">4. Szín</span>
+          <span class="scene-title">Egyiptom – A Hatalom Ára</span>
+          <p class="scene-desc">Ádám fáraóként halhatatlanságra vágyik. Éva, a korbácsolt rabszolga felesége, ráébreszti: a nagyság ára a nép szenvedése. „Milliók egy miatt." Lucifer hidegen szemléli az ellentmondást. Ádám mégis felszabadítja a rabszolgákat.</p>
+        </div>
+        <div class="scene-card">
+          <span class="scene-num">5. Szín</span>
+          <span class="scene-title">Athén – A Demokrácia Csődje</span>
+          <p class="scene-desc">Miltiadészként a demokratikus szabadság eszményét próbálja megvalósítani Ádám. De a nép befolyásolható, a demagógia győz az érvelés felett: a hős hadvezért saját polgártársai ítélik halálra. Éva itt a vádló asszony szerepét játssza.</p>
+        </div>
+        <div class="scene-card">
+          <span class="scene-num">6. Szín</span>
+          <span class="scene-title">Róma – Az Értékvesztett Világ</span>
+          <p class="scene-desc">Ádám egyszerű polgár, Éva a barátnőj, Lucifer a mulatótárs. Kenyér és cirkusz. A tömeg szórakozásra és érzéki örömre vágyik – az eszmék elvesznek. De a kereszténység már feltűnik: a szeretet és egyenlőség ígéretével megjelenő új hit reményt hint Ádám szívébe.</p>
+        </div>
+        <div class="scene-card">
+          <span class="scene-num">7. Szín</span>
+          <span class="scene-title">Konstantinápoly – A Hit Romlása</span>
+          <p class="scene-desc">Tankréd kereszteslovagként küzd – de a kereszténységből már hódító vallás, politika lett. Izóra, Ádám szerelme, kolostor rabja. A kor babonás, korrupt szelleme ellen az egyén tehetetlen. A tiszta hit intézménnyé korcsosult.</p>
+        </div>
+        <div class="scene-card">
+          <span class="scene-num">11. Szín</span>
+          <span class="scene-title">London – A Kapitalizmus Világa</span>
+          <p class="scene-desc">A 19. századi nagyváros forgatagában a szabad verseny elvben egyéni szabadságot hirdet, de valójában nyomort, kizsákmányolást és gépiesedést hoz. Ádám kívülállóként figyeli a vásári kavalkádot; a szín egy kivégzési jelenettel zárul – a modern kor kegyetlenségének tablójával.</p>
+        </div>
+        <div class="scene-card">
+          <span class="scene-num">12. Szín</span>
+          <span class="scene-title">Falanszter – A Tudomány Zsarnoksága</span>
+          <p class="scene-desc">A jövő hideg tudósállamában megszűnt a nyomor, de az egyéniség, a szerelem és a művészet is. Michelangelo tervét a tudós elveti mint felesleges szépséget. Az ember fogaskerék lett. A szabadság helyett szabályrendszer ural mindent.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ornament-divider">— ✦ ✦ ✦ —</div>
+
+    <!-- SECTION 4: ÖSSZEFOGLALÁS -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">III. Rész</span>
+        <h2>Összefoglalás</h2>
+        <div class="section-divider"><span>✦</span></div>
+      </div>
+
+      <div class="summary-box">
+        <p style="text-indent:0; margin-bottom:16px">Az ember tragédiája az emberi lét alapvető kérdéseivel néz szembe: van-e értelme a küzdelemnek, ha a történelem mindig újabb és újabb keserű tanulsággal szolgál? Madách műve tragikus és mégis reményteli egyszerre: minden korszak nagy eszméje – a demokrácia, a hit, a tudomány – csőddel végzi, s Ádám újra meg újra kétely fogja el. Mégis a mű végső hangja nem a pusztulásé: Éva várandóssága és az Úr záró parancsa a cselekvő remény üzenetét hirdeti.</p>
+        <p style="text-indent:0; margin-bottom:16px">A küzdelem maga az emberi méltóság forrása – nem a siker, hanem a törekvés ad értelmet az életnek. Madách személyes tragédiái – a forradalom bukása, a szerettei elvesztése, a kiábrándultság – nem megtörték, hanem megérlelték: megírta az emberiség legőszintébb önvallomását.</p>
+
+        <div class="quote-box" style="margin-top:20px; margin-bottom:16px">
+          <blockquote>„Mondottam, ember: küzdj és bízva bízzál!"</blockquote>
+          <p class="quote-source">– Az Úr (XV. szín)</p>
+        </div>
+        <div class="quote-box" style="margin-top:14px; margin-bottom:16px">
+          <blockquote>„Uram, legyőztél. Im porban vagyok; Nélküled, ellened hiába küzdök."</blockquote>
+          <p class="quote-source">– Ádám utolsó szavai (XV. szín)</p>
+        </div>
+        <div class="quote-box" style="margin-top:14px; margin-bottom:0">
+          <blockquote>„Karod erős, szived meleg; Ne félj, bízva bízzál!"</blockquote>
+          <p class="quote-source">– Az angyalok karának szavai (XV. szín)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ornament-divider">— ✦ ✦ ✦ —</div>
+
+    <!-- SECTION 5: KVÍZ -->
+    <div class="section">
+      <div class="section-header">
+        <span class="section-number">IV. Rész</span>
+        <h2>Mini Kvíz</h2>
+        <div class="section-divider"><span>✦</span></div>
+      </div>
+
+      <p style="text-indent:0; margin-bottom:20px; text-align:center">Kattints a kérdésre a helyes válasz felfedéséhez!</p>
+
+      <div class="quiz-container" id="quiz">
+
+        <div class="quiz-item">
+          <div class="quiz-question" onclick="toggleQuiz(this)">
+            <span class="q-num">I.</span>
+            <span class="q-text">Mikor és hol írta Madách Az ember tragédiáját?</span>
+            <span class="q-arrow">▶</span>
+          </div>
+          <div class="quiz-answer">1859 és 1860 között írta a csesztvei birtok magányában, miután számos személyes tragédián – börtön, elvált házasság, szerettei halála – ment keresztül.</div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-question" onclick="toggleQuiz(this)">
+            <span class="q-num">II.</span>
+            <span class="q-text">Mi Lucifer szerepe a műben?</span>
+            <span class="q-arrow">▶</span>
+          </div>
+          <div class="quiz-answer">Lucifer a tagadás szelleme, aki Ádám kísérője az álom-utazáson. Nem csupán gonosz – hideg logikával leplezi le az emberi eszmények ellentmondásait és korlátait, hogy megmutassa: minden törekvés hiábavaló.</div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-question" onclick="toggleQuiz(this)">
+            <span class="q-num">III.</span>
+            <span class="q-text">Mit szimbolizál az athéni szín a demokráciával kapcsolatban?</span>
+            <span class="q-arrow">▶</span>
+          </div>
+          <div class="quiz-answer">Ádám Miltiadészként a demokratikus ideált próbálja megvalósítani, ám a nép könnyen befolyásolható, a demagógia felülírja az értéket: a polgárok saját győztes hadvezérüket ítélik halálra. A demokrácia eszménye összeomlik az emberi gyarlóság előtt.</div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-question" onclick="toggleQuiz(this)">
+            <span class="q-num">IV.</span>
+            <span class="q-text">Miért fordulat a konstantinápolyi szín a kereszténység bemutatásában?</span>
+            <span class="q-arrow">▶</span>
+          </div>
+          <div class="quiz-answer">Rómában a kereszténység még a szeretet és az egyenlőség friss ígérete volt. Konstantinápolyban azonban már hódító vallássá, politikává züllött: a kereszteslovag Tankréd (Ádám) hiába hordoz tiszta hitet, a kor babonás és korrupt szelleme ellen tehetetlen.</div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-question" onclick="toggleQuiz(this)">
+            <span class="q-num">V.</span>
+            <span class="q-text">Mit kritizál Madách a londoni és a falanszter-színben?</span>
+            <span class="q-arrow">▶</span>
+          </div>
+          <div class="quiz-answer">Londonban a 19. századi kapitalizmust bírálja: a szabad verseny nyomort és kizsákmányolást szül. A falanszterben a jövő túlzott racionalizmusa ellen szól: a tudomány megszünteti a nyomort, de elfojtja az egyéniséget, a szerelmet és a művészetet.</div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-question" onclick="toggleQuiz(this)">
+            <span class="q-num">VI.</span>
+            <span class="q-text">Mi akadályozza meg Ádámot az öngyilkosságtól a záró színben?</span>
+            <span class="q-arrow">▶</span>
+          </div>
+          <div class="quiz-answer">Éva bejelenti, hogy várandós. Az új élet ígérete – a születés, a folytatás, a jövő – visszatéríti Ádámot a reményhez. Ez Madách legmélyebb üzenete: az élet és a szerelem erősebb a kétségnél.</div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-question" onclick="toggleQuiz(this)">
+            <span class="q-num">VII.</span>
+            <span class="q-text">Mit jelent Madách párhuzama saját élete és a Tragédia között?</span>
+            <span class="q-arrow">▶</span>
+          </div>
+          <div class="quiz-answer">Madách börtöne, forradalmi kiábrándulása, válása és szerettei elvesztése mind megjelenik a mű pesszimizmusában és kétségeiben. Mégis – ahogyan Ádám sem adja fel – Madách is a küzdés értelmét hirdetette, s a Tragédia végsősoron saját sorsának filozofikus feldolgozása.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /paper -->
+
+  <div class="footer-band">
+    ✦ &nbsp; Az Ember Tragédiája &nbsp;·&nbsp; Madách Imre &nbsp;·&nbsp; 1861-ben nyomtattatott ki első ízben &nbsp; ✦
+  </div>
+
+</div><!-- /page-wrapper -->
+
+<script>
+  function toggleQuiz(el) {
+    const item = el.parentElement;
+    const answer = item.querySelector('.quiz-answer');
+    const isOpen = item.classList.contains('active');
+    
+    // Close all
+    document.querySelectorAll('.quiz-item').forEach(q => {
+      q.classList.remove('active');
+      q.querySelector('.quiz-answer').classList.remove('open');
+    });
+
+    if (!isOpen) {
+      item.classList.add('active');
+      answer.classList.add('open');
+    }
+  }
+
+  // Animate sections on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.section').forEach(s => {
+    s.style.animationPlayState = 'paused';
+    observer.observe(s);
+  });
+</script>
+</body>
+</html>
