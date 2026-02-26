@@ -228,7 +228,6 @@
     font-family: 'Cinzel Decorative', serif;
     font-size: 3.2em;
     line-height: 0.8;
-    float: left;
     margin: 0.08em 0.1em 0 0;
     color: var(--red-accent);
     text-shadow: 2px 2px 4px rgba(139,26,26,0.2);
@@ -667,6 +666,8 @@
     white-space: nowrap;
     cursor: default;
     transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
   }
 
   .szin-pill:hover {
@@ -736,7 +737,6 @@
     <!-- SECTION 2: MADÁCH ÉLETE -->
     <div class="section">
       <div class="section-header">
-        <span class="section-number">I. Rész</span>
         <h2>Madách Imre Élete</h2>
         <div class="section-divider"><span>✦</span></div>
       </div>
@@ -744,11 +744,9 @@
       <div class="portrait-section">
         <div class="portrait-frame">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGUhMVrd9dBSLNfDmSygR4jjBsoCrnPMErJR8rxzQRWvaVcU1_C4oDc3cFAQ-hWBkw84FMDtNfA9jxVFnVb6NtR7oeBWkjBgNbFCk4Bw&s=10" alt="Madách Imre portréja" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <div style="display:none; width:100%; height:200px; background:rgba(139,86,40,0.15); border:2px solid var(--border-dark); display:flex; align-items:center; justify-content:center; flex-direction:column;">
-            <span style="font-size:3rem; color:var(--gold);">🖼</span>
-            <small style="font-family:'IM Fell English SC',serif; font-size:0.65rem; color:var(--ink-light); text-align:center; padding:8px;">Madách Imre<br>portréja</small>
-          </div>
-          <p class="portrait-caption">Madách Imre<br>1823–1864</p>
+          <img src="https://cdn.antikvarium.hu/foto/eredeti/2920825.jpg" alt="AzEmberTragediaja">
+          <img src="https://cultura.hu/wp-content/uploads/2023/01/cultura-madach-imre.jpeg" alt="MadachImre">
+          <img src="https://cdn.antikvarium.hu/foto/eredeti/43857230.jpg" alt="AzEmberTragediaja">
         </div>
         <div>
           <p style="text-indent:0">Madách Imre 1823-ban született Alsósztregován, Nógrád megyében, nemesi családba. Pesten jogot tanult, majd az irodalmi élet perifériájára szorult gyenge egészsége miatt, és visszavonult a csesztvei birtok csendjébe – ahol végül megírta élete főművét.</p>
@@ -799,8 +797,7 @@
     <!-- SECTION 3: A MŰ -->
     <div class="section">
       <div class="section-header">
-        <span class="section-number">II. Rész</span>
-        <h2>Az Ember Tragédiája – A Tétel Kifejtése</h2>
+        <h2>Az Ember Tragédiája</h2>
         <div class="section-divider"><span>✦</span></div>
       </div>
 
@@ -821,19 +818,19 @@
       <p>A mű 15 színből áll. Az <em>első három és az utolsó</em> a keretszínek: az égben és a paradicsomban játszódnak, ahol az Úr, Lucifer, Ádám és Éva eredeti viszonyát ismerhetjük meg. A közbülső történelmi színek az emberiség nagy korszakait jelenítik meg Ádám álmán keresztül.</p>
 
       <div class="szin-map">
-        <span class="szin-pill frame">1–3. Szín: Menny & Paradicsom (Keretszín)</span>
-        <span class="szin-pill">4. Egyiptom</span>
-        <span class="szin-pill">5. Athén</span>
-        <span class="szin-pill">6. Róma</span>
-        <span class="szin-pill">7. Konstantinápoly</span>
-        <span class="szin-pill">8. Prága (Kepler)</span>
-        <span class="szin-pill">9. Párizs</span>
-        <span class="szin-pill">10. Prága (Kepler álma)</span>
-        <span class="szin-pill">11. London</span>
-        <span class="szin-pill">12. Falanszter</span>
-        <span class="szin-pill">13. Világűr</span>
-        <span class="szin-pill">14. Eszkimó-jelenet</span>
-        <span class="szin-pill frame">15. Pálmafás kert (Keretszín)</span>
+        <a class="szin-pill frame" href="https://mek.oszk.hu/00800/00849/html/01.htm#1" target="_blank" rel="noopener">1–3. Szín: Menny & Paradicsom (Keretszín)</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#4" target="_blank" rel="noopener">4. Egyiptom</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#5" target="_blank" rel="noopener">5. Athén</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#6" target="_blank" rel="noopener">6. Róma</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#7" target="_blank" rel="noopener">7. Konstantinápoly</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#8" target="_blank" rel="noopener">8. Prága (Kepler)</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#9" target="_blank" rel="noopener">9. Párizs</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#10" target="_blank" rel="noopener">10. Prága (Kepler álma)</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#11" target="_blank" rel="noopener">11. London</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#12" target="_blank" rel="noopener">12. Falanszter</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#13" target="_blank" rel="noopener">13. Világűr</a>
+        <a class="szin-pill" href="https://mek.oszk.hu/00800/00849/html/01.htm#14" target="_blank" rel="noopener">14. Eszkimó-jelenet</a>
+        <a class="szin-pill frame" href="https://mek.oszk.hu/00800/00849/html/01.htm#15" target="_blank" rel="noopener">15. Pálmafás kert (Keretszín)</a>
       </div>
 
       <!-- 2.3 Szereplők -->
@@ -864,15 +861,12 @@
         <h3>4. A Mű Vége és Üzenete</h3>
       </div>
 
-      <p>A tizenötödik szín a pálmafás kertbe tér vissza: Ádám felébred a luciferi látomásból, és az emberiség végzetének tudatában öngyilkosságra készül. Ám Éva bejelenti várandósságát – az új élet ígérete megállítja. Ádám leborul az Úr előtt, s hangzik el a dráma zárómondata.</p>
+      <p>A tizenötödik szín a pálmafás kertbe tér vissza: Ádám felébred a luciferi látomásból, és az emberiség végzetének tudatában öngyilkosságra készül. Ám Éva bejelenti várandósságát – az új élet ígérete megállítja. Ádám leborul az Úr előtt, s ezt mondja: <br> <em>„Uram, legyőztél. Im porban vagyok; / Nélküled, ellened hiába küzdök."</em> <br> Ez nem pusztán megadás – hanem a transzcendencia szükségességének felismerése. Az angyalok kara ezután énekel, majd az úr szavaival zárul a mű;</p>
 
       <div class="quote-box">
         <blockquote>„Mondottam, ember: küzdj és bízva bízzál!"</blockquote>
         <p class="quote-source">– Az Úr záró szavai, Az ember tragédiája, XV. szín</p>
       </div>
-
-      <p>Ádám utolsó szavai: <em>„Uram, legyőztél. Im porban vagyok; / Nélküled, ellened hiába küzdök."</em> Ez nem pusztán megadás – hanem a transzcendencia szükségességének felismerése. Az angyalok kara ezután énekli: „Karod erős, szived meleg; / Ne félj, bízva bízzál!"</p>
-
       <!-- ESZMÉK: EGYIPTOM, ATHÉN -->
       <div class="ornament-divider" style="margin: 32px 0 24px">— ✦ —</div>
 
@@ -920,7 +914,6 @@
     <!-- SECTION 4: ÖSSZEFOGLALÁS -->
     <div class="section">
       <div class="section-header">
-        <span class="section-number">III. Rész</span>
         <h2>Összefoglalás</h2>
         <div class="section-divider"><span>✦</span></div>
       </div>
@@ -929,17 +922,8 @@
         <p style="text-indent:0; margin-bottom:16px">Az ember tragédiája az emberi lét alapvető kérdéseivel néz szembe: van-e értelme a küzdelemnek, ha a történelem mindig újabb és újabb keserű tanulsággal szolgál? Madách műve tragikus és mégis reményteli egyszerre: minden korszak nagy eszméje – a demokrácia, a hit, a tudomány – csőddel végzi, s Ádám újra meg újra kétely fogja el. Mégis a mű végső hangja nem a pusztulásé: Éva várandóssága és az Úr záró parancsa a cselekvő remény üzenetét hirdeti.</p>
         <p style="text-indent:0; margin-bottom:16px">A küzdelem maga az emberi méltóság forrása – nem a siker, hanem a törekvés ad értelmet az életnek. Madách személyes tragédiái – a forradalom bukása, a szerettei elvesztése, a kiábrándultság – nem megtörték, hanem megérlelték: megírta az emberiség legőszintébb önvallomását.</p>
 
-        <div class="quote-box" style="margin-top:20px; margin-bottom:16px">
-          <blockquote>„Mondottam, ember: küzdj és bízva bízzál!"</blockquote>
-          <p class="quote-source">– Az Úr (XV. szín)</p>
-        </div>
-        <div class="quote-box" style="margin-top:14px; margin-bottom:16px">
-          <blockquote>„Uram, legyőztél. Im porban vagyok; Nélküled, ellened hiába küzdök."</blockquote>
-          <p class="quote-source">– Ádám utolsó szavai (XV. szín)</p>
-        </div>
-        <div class="quote-box" style="margin-top:14px; margin-bottom:0">
-          <blockquote>„Karod erős, szived meleg; Ne félj, bízva bízzál!"</blockquote>
-          <p class="quote-source">– Az angyalok karának szavai (XV. szín)</p>
+        <div style="margin: 30px auto; text-align: center;">
+          <img src="https://urania-nf.hu/images/esemenyek/big/pic_20211013101141_cp954qhpfnh.jpg" alt="Az Ember Tragédiája" style="max-width: 100%; height: auto; border: 3px solid var(--gold); box-shadow: 0 6px 20px rgba(139,86,40,0.3); border-radius: 4px;">
         </div>
       </div>
     </div>
@@ -949,7 +933,6 @@
     <!-- SECTION 5: KVÍZ -->
     <div class="section">
       <div class="section-header">
-        <span class="section-number">IV. Rész</span>
         <h2>Mini Kvíz</h2>
         <div class="section-divider"><span>✦</span></div>
       </div>
